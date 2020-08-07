@@ -39,6 +39,7 @@
 
 On my machine it takes around 1 second
 
+```
 Days              : 0
 Hours             : 0
 Minutes           : 0
@@ -50,6 +51,7 @@ TotalHours        : 0.000280656583333333
 TotalMinutes      : 0.016839395
 TotalSeconds      : 1.0103637
 TotalMilliseconds : 1010.3637
+```
 
 # Possible improvement
 
