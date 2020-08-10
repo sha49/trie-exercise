@@ -22,6 +22,18 @@ spec = describe "Prefix Set" $ do
     -- using sets to compare results since the result is not a sorted list
     (fromList $ prefixes words) `shouldBe` expected
 
+  it "repeated words" $ do
+    let words    = ["hola", "hola"]
+    let expected = fromList ["h"]
+    -- using sets to compare results since the result is not a sorted list
+    (fromList $ prefixes words) `shouldBe` expected
+
+  it "repeated words and shared prefix" $ do
+    let words    = ["cacahuet","cacafuet","cacahuet","cacahuet"]
+    let expected = fromList ["cacah", "cacaf"]
+    -- using sets to compare results since the result is not a sorted list
+    (fromList $ prefixes words) `shouldBe` expected
+
   it "(toWords o fromWords) over the empty list" $ do
     prefixes [] `shouldBe` []
 

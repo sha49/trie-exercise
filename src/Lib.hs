@@ -35,7 +35,8 @@ addWord (Node childs) word = addToNode word childs
 addToLeaf :: String -> String -> Trie
 addToLeaf s@(w:ws) [] = Leaf s
 addToLeaf s@(w:ws) l@(r:rs)
-  | w == r = addWord (addWord empty l) s 
+  | s == l = Leaf l
+  | w == r = addWord (addWord empty l) s
   | otherwise = Node $ HM.fromList [(w, Leaf ws), (r, Leaf rs)]
 
 addToNode :: String -> (HashMap Char Trie) -> Trie
@@ -44,6 +45,7 @@ addToNode (w:ws) childs
   | otherwise = case (HM.lookup w childs) of
       Nothing -> Node $ HM.insert w (Leaf ws) childs
       (Just child) -> Node $ HM.insert w (addWord child ws) childs
+      
 -- -------------------------------------------------------------
 fromWords :: [String] -> Trie
 fromWords = foldl addWord empty
